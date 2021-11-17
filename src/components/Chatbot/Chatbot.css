@@ -1,0 +1,33 @@
+.chatbox {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  transition: all 0.3s  ease;
+  z-index: 10;
+}
+
+
+.chatbox.zoom {
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+}
+
+.chatbox.zoom .chatbox-wapper {
+  width: 450px;
+  height: 65vh;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: all 0.3s ease;
+}
+
+.overlay.active {
+  background: rgba(255, 255, 255, 0.6);
+}
