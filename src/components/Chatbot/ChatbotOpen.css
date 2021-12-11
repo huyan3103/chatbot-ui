@@ -106,3 +106,10 @@
     flex: 1;
   }
   
+
+  @media (max-width: 480px) {
+    .chatbox-wapper {
+      width: 100vw;
+      height: 100vh;
+    }
+  }

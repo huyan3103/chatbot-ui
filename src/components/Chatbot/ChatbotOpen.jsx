@@ -7,7 +7,7 @@ import "./ChatbotOpen.css";
 const ChatbotOpen = (props) => {
   const { setIsOpen } = props;
   const [conversation, setConversation] = useState(() => {
-    const saved = localStorage.getItem("conversation");
+    const saved = sessionStorage.getItem("conversation");
     const initialValue = JSON.parse(saved);
     return initialValue || [];
   });
@@ -35,25 +35,8 @@ const ChatbotOpen = (props) => {
       chatboxInnerRef.current.scrollTop = chatboxInnerRef.current.scrollHeight;
     }
 
-    localStorage.setItem("conversation", JSON.stringify(conversation));
+    sessionStorage.setItem("conversation", JSON.stringify(conversation));
   }, [conversation]);
-
-  // useEffect(() => {
-  //   fetch("https://icanhazdadjoke.com/", {
-  //     // method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       // "Content-Type": "application/json",
-  //     },
-  //     // body: JSON.stringify({ question: "xin chào" }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) =>
-  //       setConversation((prevState) => {
-  //         return [...prevState, { sender: "bot", content: data.joke }];
-  //       })
-  //     );
-  // }, []);
 
   useEffect(() => {
     sendRequest("hello");
@@ -115,7 +98,10 @@ const ChatbotOpen = (props) => {
     <div className="chatbox-wapper">
       <div className="chatbox-header">
         <p>Ultimate Chatbot For Education</p>
-        <div className="chatbox-btn" onClick={props.handleToggleZoom}>
+        <div
+          className="chatbox-btn chatbox-btn__zoom"
+          onClick={props.handleToggleZoom}
+        >
           {props.zoom ? (
             <box-icon name="minus" color="white"></box-icon>
           ) : (

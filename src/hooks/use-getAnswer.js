@@ -17,9 +17,8 @@ const useGetAnswer = (applyData) => {
 
       const data = await response.json();
       applyData(data.mess);
-      console.log(data);
     } catch (err) {
-      setError(err.message || "Something wrent wrong");
+      setError(err.message || Math.random());
     }
 
     setIsLoading(false);

@@ -13,4 +13,19 @@ body {
     background-image: url('./image/background-fake.png');
     background-repeat: no-repeat;
     background-size: cover;
+    /* background-position:center; */
 }
+
+
+@media (max-width: 768px) {
+    body {
+        background-image: url('./image/background-fake-ipad.png');
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-image: url('./image/background-fake-small.png');
+    }
+}
+

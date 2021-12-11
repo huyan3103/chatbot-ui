@@ -19,7 +19,11 @@ const Chatbot = () => {
 
   return (
     <div>
-      <div className={`${zoom ? "chatbox zoom" : "chatbox"} `}>
+      <div
+        className={`${zoom ? "chatbox zoom" : "chatbox"}  ${
+          isOpen ? "open" : ""
+        }`}
+      >
         {isOpen ? (
           <ChatbotOpen
             setIsOpen={setIsOpen}
