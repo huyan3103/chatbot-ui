@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import chatbotIcon from "../../image/avatar_chatbot.png";
 import "./ChatbotMessage.css";
 
-const ChatbotMessage = (props) => {
-  //Tách câu dài thành các câu nhỏ rồi in ra
-
-  const message = props.children;
+const ChatbotMessage = ({ sender, children: message }) => {
   let content = "";
+
+  // split long message into sentences by ". "
   if (typeof message === "string") {
-    if (props.sender === "bot") {
+    if (sender === "bot") {
       content = message.split(/(\.\s)/).map(
         (item, index) =>
           item !== ". " && (
@@ -24,12 +23,13 @@ const ChatbotMessage = (props) => {
   } else {
     content = message;
   }
+
   return (
-    <div className={`chatbot-message ${props.sender}`}>
+    <div className={`chatbot-message ${sender}`}>
       <div className="chatbot-message-line">
         <span></span>
         <div className="chatbot-message-line-main">
-          {props.sender === "bot" && <img src={chatbotIcon} alt="" />}
+          {sender === "bot" && <img src={chatbotIcon} alt="" />}
           <div>{content}</div>
         </div>
       </div>
@@ -38,7 +38,6 @@ const ChatbotMessage = (props) => {
 };
 
 ChatbotMessage.propTypes = {
-  // content: PropTypes.string.isRequired,
   sender: PropTypes.string.isRequired,
 };
 

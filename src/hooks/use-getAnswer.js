@@ -14,7 +14,6 @@ const useGetAnswer = (applyData) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: input }),
       });
-
       const data = await response.json();
       applyData(data.mess);
     } catch (err) {

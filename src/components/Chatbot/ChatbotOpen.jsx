@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from "react";
+import useGetAnswer from "../../hooks/use-getAnswer";
+
 import ChatbotMessage from "./ChatbotMessage";
 import WaveMessage from "./WaveMessage";
-import useGetAnswer from "../../hooks/use-getAnswer";
+
 import "./ChatbotOpen.css";
 
-const ChatbotOpen = (props) => {
-  const { setIsOpen } = props;
+const ChatbotOpen = ({ setIsOpen, zoom, handleToggleZoom, handleZoomOut }) => {
   const [conversation, setConversation] = useState(() => {
+    // get conversation from sessionStorage
     const saved = sessionStorage.getItem("conversation");
     const initialValue = JSON.parse(saved);
     return initialValue || [];
@@ -30,6 +32,7 @@ const ChatbotOpen = (props) => {
 
   const chatboxInnerRef = useRef();
 
+  // auto scroll bottom message
   useEffect(() => {
     if (chatboxInnerRef.current) {
       chatboxInnerRef.current.scrollTop = chatboxInnerRef.current.scrollHeight;
@@ -43,7 +46,7 @@ const ChatbotOpen = (props) => {
   }, []);
 
   const handleCloseChatbox = () => {
-    props.handleZoomOut();
+    handleZoomOut();
     setIsOpen(false);
   };
 
@@ -63,36 +66,16 @@ const ChatbotOpen = (props) => {
           },
         ];
       });
-
-      // getResponse(enteredTextInput);
       sendRequest(enteredTextInput);
     }
     setEnteredTextInput("");
   };
 
-  // const getResponse = async (input) => {
-  //   setIsWaiting(true);
-  //   await fetch("https://icanhazdadjoke.com/", {
-  //     // method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       // "Content-Type": "application/json",
-  //     },
-  //     // body: JSON.stringify({ question: input }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) =>
-  //       setConversation((prevState) => {
-  //         return [...prevState, { sender: "bot", content: data.joke }];
-  //       })
-  //     )
-  //     .catch(() =>
-  //       setConversation((prevState) => {
-  //         return [...prevState, { sender: "bot", content: "Lỗi hệ thống" }];
-  //       })
-  //     );
-  //   setIsWaiting(false);
-  // };
+  const iconZoomHeader = zoom ? (
+    <box-icon name="minus" color="white"></box-icon>
+  ) : (
+    <box-icon name="square" color="white"></box-icon>
+  );
 
   return (
     <div className="chatbox-wapper">
@@ -100,24 +83,23 @@ const ChatbotOpen = (props) => {
         <p>Ultimate Chatbot For Education</p>
         <div
           className="chatbox-btn chatbox-btn__zoom"
-          onClick={props.handleToggleZoom}
+          onClick={handleToggleZoom}
         >
-          {props.zoom ? (
-            <box-icon name="minus" color="white"></box-icon>
-          ) : (
-            <box-icon name="square" color="white"></box-icon>
-          )}
+          {iconZoomHeader}
         </div>
         <div className="chatbox-btn" onClick={handleCloseChatbox}>
           <box-icon name="x" color="white"></box-icon>
         </div>
       </div>
       <div className="chatbox-inner" ref={chatboxInnerRef}>
+        {/* render message */}
         {conversation.map((message, index) => (
           <ChatbotMessage sender={message.sender} key={index}>
             {message.content}
           </ChatbotMessage>
         ))}
+
+        {/* render animation when loading */}
         {isLoading && (
           <ChatbotMessage sender="bot">
             <WaveMessage />
@@ -132,7 +114,6 @@ const ChatbotOpen = (props) => {
             onChange={handleChangeInput}
             value={enteredTextInput}
           />
-
           <button
             className={`chatbox-btn ${enteredTextInput && "active"}`}
             type="submit"

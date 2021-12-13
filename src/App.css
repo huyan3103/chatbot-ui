@@ -5,7 +5,7 @@
 
 :root {
     --chatbox-header-height: 60px;
-    --chatbox-form-height: 44px
+    --chatbox-form-height: 44px;
 }
 
 body {
@@ -13,16 +13,16 @@ body {
     background-image: url('./image/background-fake.png');
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-position:center; */
 }
 
-
+/* TABLET */
 @media (max-width: 768px) {
     body {
         background-image: url('./image/background-fake-ipad.png');
     }
 }
 
+/* SMALL SMART PHONE */
 @media (max-width: 480px) {
     body {
         background-image: url('./image/background-fake-small.png');
