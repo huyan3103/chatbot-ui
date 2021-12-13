@@ -28,7 +28,6 @@
 
 .chatbot-message-line-main {
   display: flex;
-  align-items: center;
   max-width: 70%;
 }
 

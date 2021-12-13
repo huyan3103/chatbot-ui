@@ -30,7 +30,7 @@ const ChatbotMessage = ({ sender, children: message }) => {
         <span></span>
         <div className="chatbot-message-line-main">
           {sender === "bot" && <img src={chatbotIcon} alt="" />}
-          <div>{content}</div>
+          <div style={{ alignSelf: "center" }}>{content}</div>
         </div>
       </div>
     </div>
