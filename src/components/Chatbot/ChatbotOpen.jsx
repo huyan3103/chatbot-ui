@@ -40,7 +40,9 @@ const ChatbotOpen = ({ setIsOpen, zoom, handleToggleZoom, handleZoomOut }) => {
   }, [conversation])
 
   useEffect(() => {
-    sendRequest('hello')
+    if(conversation.length === 0)
+      sendRequest('hello')
+    }
   }, [])
 
   const handleCloseChatbox = () => {
