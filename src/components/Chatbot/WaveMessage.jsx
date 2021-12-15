@@ -1,5 +1,5 @@
-import React from "react";
-import "./WaveMessage.css";
+import React from 'react'
+import './WaveMessage.css'
 
 const WaveMessage = () => {
   return (
@@ -10,7 +10,7 @@ const WaveMessage = () => {
       <div className="jump4"></div>
       <div className="jump5"></div>
     </div>
-  );
-};
+  )
+}
 
-export default WaveMessage;
+export default WaveMessage

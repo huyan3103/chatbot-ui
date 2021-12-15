@@ -1,16 +1,30 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Be Vietnam Pro', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 :root {
-    --chatbox-header-height: 60px;
-    --chatbox-form-height: 44px
+  --chatbox-header-height: 60px;
+  --chatbox-form-height: 44px;
 }
 
 body {
-    margin: 0;
-    background-image: url('./image/background-fake.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  margin: 0;
+  background-image: url('./image/background-fake.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* TABLET */
+@media (max-width: 768px) {
+  body {
+    background-image: url('./image/background-fake-ipad.png');
+  }
+}
+
+/* SMALL SMART PHONE */
+@media (max-width: 480px) {
+  body {
+    background-image: url('./image/background-fake-small.png');
+  }
 }

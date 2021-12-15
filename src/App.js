@@ -1,7 +1,8 @@
-import Chatbot from "./components/Chatbot/Chatbot";
-import "./App.css";
-function App() {
-  return <Chatbot />;
+import Chatbot from './components/Chatbot/Chatbot'
+import './App.css'
+
+const App = () => {
+  return <Chatbot />
 }
 
-export default App;
+export default App
