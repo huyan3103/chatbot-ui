@@ -9,7 +9,7 @@ const useGetAnswer = (applyData) => {
     setError(null);
 
     try {
-      const response = await fetch("http://ultimate-chatbot.tk:8080/", {
+      const response = await fetch("https://capstone1-chatbotv1.herokuapp.com/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: input }),
