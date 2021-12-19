@@ -9,7 +9,7 @@ const useGetAnswer = (applyData) => {
     setError(null);
 
     try {
-      const response = await fetch("https://ultimate-chatbot.tk:8080/", {
+      const response = await fetch("https://ultimate-chatbot.tk/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: input }),
